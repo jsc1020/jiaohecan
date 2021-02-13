@@ -1,0 +1,10 @@
+<apex:page controller="MyProduct0821" tabStyle="Prodcut__c">
+    <apex:form >
+        <apex:pageblock title="Congratulations {!$User.FirstName}">
+            商品名：<apex:inputField value="{!p.Name}"/>
+            在庫数：<apex:inputField value="{!p.StockQuantity__c}"/>
+            売上単価：<apex:inputField value="{!p.SalesPrice__c}"/>
+            <apex:commandButton action="{!saveP}" value="save"/>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

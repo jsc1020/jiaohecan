@@ -1,0 +1,69 @@
+<apex:page docType="html-5.0" controller="PR30101Controller" showHeader="false" sidebar="false"  standardStylesheets="false" renderAs="pdf" applyBodyTag="false">
+    <head>
+        <style>
+            body { font-family: 'Arial Unicode MS'; }
+        </style>
+    </head>
+    <table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#999999">
+        <tr>
+            <td height="8" valign="top" bgcolor="#CCCCCC">
+                <div align="center" class="subtitlefont"><strong>発注書</strong></div></td>
+        </tr>
+        <table width="100%" border="0" bgcolor="#FFFFFF">         
+            <td width="57%"><apex:outputText value="{!t005.Account__c}様"></apex:outputText></td>
+            <td width="25%" align="right" >川崎商会株式会社</td>
+        </table>
+        <table width="100%" border="0" bgcolor="#FFFFFF">         
+
+
+            <td width="25%" align="right" >
+                <apex:outputText value="発注日付:{!t005.T00504__c}"></apex:outputText>
+            </td>
+        </table>
+        <table width="100%" border="0" bgcolor="#FFFFFF">         
+            
+        </table>
+        <apex:form >
+            <apex:pageBlock >
+                <apex:pageBlockTable value="{!beenList}" var="var" id="list" width="100%" border="1" cellpadding="0" cellspacing="0" align="center"  >
+                    <apex:variable var="rowIndex" value="{!0}"/>
+                    <apex:column >
+                        <apex:facet name="header">項番</apex:facet>
+                        {!rowIndex}
+                        <apex:variable var="rowIndex" value="{!rowIndex+1}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">商品コード</apex:facet>
+                        <apex:outputField value="{!var.product.ProductCode__c}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">商品名</apex:facet>
+                        <apex:outputField value="{!var.product.Name}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">単位</apex:facet>
+                        <apex:outputField value="{!var.product.Unit__c}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">仕入数量</apex:facet>
+                        <apex:inputText value="{!var.count}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">仕入単価</apex:facet>
+                        <apex:outputField value="{!var.product.SalesPrice__c}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:form>
+        <table width="100%" border="0" bgcolor="#FFFFFF">         
+            <td width="25%" >
+                <!--<apex:outputText value="希望納期:{!hajyulis.T00504__c}">
+                </apex:outputText>-->
+            </td>
+        </table>
+        <table width="100%" border="0" bgcolor="#FFFFFF">         
+            <!--<td width="25%"  ><apex:outputText value="納品場所:{!hajyulis.Account__r.BillingAddressKana__c}"></apex:outputText>
+            </td>-->
+        </table>
+    </table>
+</apex:page>

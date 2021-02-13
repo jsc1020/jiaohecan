@@ -1,0 +1,27 @@
+<apex:component access="global">
+    <style type="text/css">
+        body {font-family: Courier; size: 12pt;}
+        table {
+        border-width: 5px;
+        border-spacing: 5px;
+        border-style: dashed;
+        border-color: #FF0000;
+        background-color: #FFFFFF;
+        }
+        td {
+        border-width: 1px;
+        padding: 4px;
+        border-style: solid;
+        border-color: #000000;
+        background-color: #FFEECC;
+        }
+        th {
+        color: #000000;
+        border-width: 1px ;
+        padding: 4px ;
+        border-style: solid ;
+        border-color: #000000;
+        background-color: #FFFFF0;
+        }
+    </style>
+</apex:component>

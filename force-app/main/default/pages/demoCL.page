@@ -1,0 +1,21 @@
+<apex:page title="Job Application Confirmation" showHeader="false" 
+    standardStylesheets="true">
+
+    <!-- The site template provides layout & style for the site -->
+    <apex:composition template="{!$Site.Template}">
+
+    <apex:define name="body">
+        <apex:form >
+            <br/>
+            <br/>
+            <center>
+                <apex:outputText value="Your application has been saved. 
+                    Thank you for your interest!"/>
+            </center>
+            <br/>
+            <br/>
+        </apex:form>
+    </apex:define>
+    
+    </apex:composition>
+</apex:page>

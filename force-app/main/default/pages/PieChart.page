@@ -1,0 +1,19 @@
+<apex:page controller="PieChartController" title="Pie Chart">
+    <script>
+        function getRemoteData(callback) {
+            PieChartController.getRemotePieData(function(result, event) {
+                if(event.status && result && result.constructor === Array) {
+                    callback(result);
+                }
+            });
+        }
+    </script>
+    <apex:chart height="350" width="450" data="getRemoteData">
+        <apex:pieSeries dataField="value" labelField="name"/>
+        <apex:legend position="right"/>
+    </apex:chart>
+    <apex:chart height="350" width="450" data="{!pieData}">
+        <apex:pieSeries dataField="value" labelField="name"/>
+        <apex:legend position="right"/>
+    </apex:chart>
+</apex:page>

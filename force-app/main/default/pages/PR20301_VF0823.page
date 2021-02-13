@@ -1,0 +1,50 @@
+<apex:page id="thePage" controller="PR30201Controller">
+    <apex:messages id="msg"/>
+    <apex:form id="theForm">
+        <apex:pageblock id="thePageBlock">
+            <apex:variable var="rowIndex" value="{!1}"/>
+            <apex:pageblockTable id="thePageBlockTable" value="{!productList}" var="var">
+                <apex:column headerValue="項番">
+                    {!rowIndex}
+                    <apex:variable var="rowIndex" value="{!rowIndex+1}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">商品名</apex:facet>
+                    <apex:outputField value="{!var.product.Name}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">在庫数</apex:facet>
+                    <apex:outputField value="{!var.product.StockQuantity__c}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">安全在庫数</apex:facet>
+                    <apex:outputField value="{!var.product.SafetyQuantity__c}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">仕入先</apex:facet>
+                    <apex:outputField value="{!var.product.Account__c}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">入庫</apex:facet>
+                    <apex:inputText value="{!var.nyukosu}" id="nyukosu"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">チェックボックス</apex:facet>
+                    <apex:inputCheckbox value="{!var.checkStock}">
+                        <apex:actionSupport event="onclick" action="{!change}" rerender="afterStockId"/>
+                    </apex:inputCheckbox>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">入庫後在庫数</apex:facet>
+                    <apex:outputPanel id="afterStockId">
+                        <apex:outputText value="{!var.afterStock}" />
+                    </apex:outputPanel>
+                </apex:column>
+            </apex:pageblockTable>
+            <apex:pageblockButtons >
+                <apex:commandButton value="在庫更新" action="{!save}"/>
+                <apex:commandButton value="キャンセル" action="{!cancel}"/>
+            </apex:pageblockButtons>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,54 @@
+<apex:page id="thePage" controller="PR30101Controller">
+    <apex:messages id="msg"/>
+    <apex:form id="theForm">
+        <apex:pageBlock >
+            <apex:pageblockSection >
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel >仕入先:</apex:outputLabel>
+                    <apex:selectList value="{!accountId}" size="1">
+                        <apex:selectOption itemValue="" itemLabel="--選択してください--"/>
+                        <apex:selectOptions value="{!accountList}" />
+                        <apex:actionSupport action="{!selectProduct}" event="onchange" reRender="thePageBlockTable"/>
+                    </apex:selectList>
+                </apex:pageblockSectionItem>
+            </apex:pageblockSection>
+            <apex:pageblockSection >
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel >希望発注納期:</apex:outputLabel>
+                    <apex:inputField value="{!t005.T00504__c}" showDatePicker="true"/>
+                </apex:pageblockSectionItem>
+            </apex:pageblockSection>
+
+            <apex:pageblockTable id="thePageBlockTable" value="{!beenList}" var="var">
+                <apex:variable var="rowIndex" value="{!0}"/>
+                <apex:column headerValue="項番">
+                    {!rowIndex}
+                    <apex:variable var="rowIndex" value="{!rowIndex+1}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">商品コード</apex:facet>
+                    <apex:outputField value="{!var.product.ProductCode__c}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">商品名</apex:facet>
+                    <apex:outputField value="{!var.product.Name}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">単位</apex:facet>
+                    <apex:outputField value="{!var.product.Unit__c}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">仕入数量</apex:facet>
+                    <apex:inputText value="{!var.count}" id="count"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">仕入単価</apex:facet>
+                    <apex:outputField value="{!var.product.SalesPrice__c}"/>
+                </apex:column>
+            </apex:pageblockTable>
+            <apex:pageblockButtons >
+                <apex:commandButton value="発注" action="{!updateProduct}"/>
+            </apex:pageblockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

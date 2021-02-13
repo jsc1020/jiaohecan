@@ -1,0 +1,15 @@
+<aura:component >
+    <lightning:card> 
+        <aura:set attribute="title"> 
+            <div> 
+                {! v.title } 
+                <lightning:buttonMenu variant="container" alternativeText="More"> 
+                    <lightning:menuItem label="label1" value="label1" /> 
+                    <lightning:menuItem label="label2" value="label2" /> 
+                    <lightning:menuItem label="label3" value="label3" /> 
+                    <lightning:menuItem label="label4" value="label4" /> 
+                </lightning:buttonMenu> 
+            </div> 
+        </aura:set> 
+    </lightning:card>
+</aura:component>
